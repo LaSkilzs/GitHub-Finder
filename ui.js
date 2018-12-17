@@ -55,6 +55,30 @@ class UI {
     }, 3000);
   }
 
+  showRepos(repos) {
+    let output = '';
+    repos.forEach(function (repo) {
+      output += `
+      <div class="card card-body mb-2">
+        <div class="row">
+          <div clas="col-md-6">
+            <a href="${repo.html_url}" target="_blank">${repo.name}
+            </a>
+          </div>
+          <div class="col-md-9">
+            <span class="badge badge-primary">Stars: ${repo.stargzer_count}</span>
+            <span class="badge badge-secondary">Watchers: ${repo.watchers_count}</span>
+            <span class="badge badge-sucess">Forks: ${repo.forms_count}</span>
+          </div>
+        </div>
+      </div>
+    `
+    })
+
+    // Output repos
+    document.getElementById('repos').innerHTML = output;
+  }
+
   // clear alert message
   clearAlert() {
     const currentAlert = document.querySelector('.alert');
