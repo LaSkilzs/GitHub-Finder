@@ -3,6 +3,7 @@ class UI {
     this.profile = document.getElementById('profile');
   }
 
+  // Create / Show Profile
   showProfile(user) {
     // console.log(user);
     this.profile.innerHTML = `
@@ -31,4 +32,42 @@ class UI {
       <div id="repos"></div>
     `;
   }
+  // Show alert Message
+  showAlert(message, className) {
+    // Clear any remaining alerts
+    this.clearAlert();
+    // Create div
+    const div = document.createElement('div');
+    // Add Class Nme
+    div.className = className;
+    // Add text
+    div.appendChild(document.createTextNode(message));
+    // Get Parent
+    const container = document.querySelector('.searchContainer');
+    // Get search box
+    const search = document.querySelector('.search');
+    // Insert alert
+    container.insertBefore(div, search);
+
+    // Timeout after 3 sec
+    setTimeout(() => {
+      this.clearAlert();
+    }, 3000);
+  }
+
+  // clear alert message
+  clearAlert() {
+    const currentAlert = document.querySelector('.alert');
+
+    if (currentAlert) {
+      currentAlert.remove();
+    }
+  }
+
+
+  // Clear the Profile
+  clearProfile() {
+    this.profile.innerHTML = " ";
+  }
 }
+
